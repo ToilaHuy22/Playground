@@ -13,11 +13,17 @@ html {
     -webkit-box-sizing: border-box;
 }
 
-@mixin flex($align: flex-start, $justify: flex-start, $wrap: nowrap) {
+@mixin flex($align: flex-start, $justify: flex-start, $wrap: nowrap, $dir: row) {
     display: flex;
     align-items: $align;
     justify-content: $justify;
     flex-wrap: $wrap;
+    flex-direction: $dir;
+}
+
+@mixin size($width, $height: $width) {
+    width: $width;
+    height: $height;
 }
 
 @mixin hover-link-smooth($color: color, $duration: 0.2s, $type: linear) {
@@ -155,55 +161,65 @@ body {
 
 .category {
     &__list {
-        @include flex(center, center, nowrap)
+        @include flex(stretch, space-between, wrap)
     }
     &__item {
+        width: calc(25% - 22.5px);
+        padding: 2.5rem;
         border-radius: 2rem;
-        margin: 0 1.5rem;
-        padding: 0 3rem 3rem 3rem;
+        //can doc bang nhau
+        @include flex(stretch, flex-start, nowrap, column);
         &:first-child {
-            margin-left: 0;
+            box-shadow: 0px 50px 70px rgba($color: #ff97c3, $alpha: 0.25);
+        }
+        &:nth-child(2) {
+            box-shadow: 0px 50px 70px rgba($color: #ff706d, $alpha: 0.25);
+        }
+        &:nth-last-child(2) {
+            box-shadow: 0px 50px 70px rgba($color: #8598ff, $alpha: 0.25);
         }
         &:last-child {
-            margin-right: 0;
+            box-shadow: 0px 50px 70px rgba($color: #ffc87a, $alpha: 0.25);
         }
     }
     &__img {
+        border-radius: inheritl;
+        @include size(100%, 230px);
         @include hover-link-smooth(0.3s);
+        margin-bottom: 4rem;
         &:hover {
             @include scale1-1();
         }
     }
     &__name {
-        margin: 3.5rem 0 2.5rem 0;
-        font-size: 1.8rem;
+        margin-bottom: 2.5rem;
+        font-size: 2rem;
         font-weight: 600;
         color: $text-color;
+        //1 dong
+        // white-space: nowrap;
+        // overflow: hidden;
+        // text-overflow: ellipsis;
     }
     &__details {
-        color: $detail-color;
         font-size: 1.4rem;
+        color: $detail-color;
+        //can doc bang nhau
+        margin-top: auto;
         @include hover-link-smooth();
         &:hover {
             color: $primary-color;
         }
+        &-icon {
+            margin-left: 1rem;
+        }
     }
-}
-
-.item-1 {
-    box-shadow: 0px 50px 70px #fde8f0;
-}
-
-.item-2 {
-    box-shadow: 0px 50px 70px #fdedec;
-}
-
-.item-3 {
-    box-shadow: 0px 50px 70px #e8ebff;
-}
-
-.item-4 {
-    box-shadow: 0px 50px 70px #fef4e6;
+    &__name,
+    &__details {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
 
 .feature {
@@ -223,7 +239,7 @@ body {
         margin-top: 10rem;
     }
     &__title {
-        font-size: 3rem;
+        font-size: 3.5rem;
         font-weight: 700;
         color: $text-color;
         line-height: 5rem;
@@ -234,20 +250,54 @@ body {
         color: $slogan-color;
     }
     &-intro {
-        &__list {
-            text-decoration-line: underline;
-        }
+        &__list {}
         &__item {
             @include flex();
+            text-decoration: underline;
             font-size: 1.4rem;
             font-weight: 500;
             color: $text-color;
             line-height: 1.8rem;
             margin-bottom: 2rem;
             cursor: pointer;
+            &--circle {
+                text-decoration: none;
+                position: relative;
+                padding-left: 3rem;
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 2rem;
+                    height: 2rem;
+                    border-radius: 2rem;
+                    background-color: #ff6adf;
+                }
+                &:nth-child(2):before {
+                    background-color: #92fa3c;
+                }
+                &:nth-last-child(2):before {
+                    background-color: #1ec0f4;
+                }
+                &:last-child:before {
+                    background-color: #ff899c;
+                }
+            }
             &:hover {
                 @include hover-link-smooth();
-                color: $primary-color;
+                &:first-child {
+                    color: #ff6adf;
+                }
+                &:nth-child(2) {
+                    color: #92fa3c;
+                }
+                &:nth-last-child(2) {
+                    color: #1ec0f4;
+                }
+                &:last-child {
+                    color: #ff899c;
+                }
             }
         }
         &__ball {
@@ -256,18 +306,6 @@ body {
             height: 2rem;
             border-radius: 50%;
             margin-right: 1rem;
-            &:first-child {
-                background-color: #f9bb65;
-            }
-            &:nth-child(2) {
-                background-color: #f9bb65;
-            }
-            &:nth-child(3) {
-                background-color: rgb(101, 168, 249);
-            }
-            &:last-child {
-                background-color: #65f9b6;
-            }
         }
     }
     &__visit {
