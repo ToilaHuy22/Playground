@@ -26,6 +26,16 @@ html {
   box-shadow: 0px 20px 30px #f9f1bc;
 }
 
+.text-clamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.text-clamp--2 {
+  -webkit-line-clamp: 2;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -48,7 +58,14 @@ body {
 }
 
 .header {
-  padding-top: 3rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  z-index: 99;
 }
 .header__inner {
   display: flex;
@@ -91,61 +108,55 @@ body {
   color: #f9bb65;
 }
 
-.header-mid {
-  margin: 12rem 22rem;
+.banner {
+  padding: 12rem;
+  max-width: 80rem;
+  margin: 0 auto;
+  text-align: center;
 }
-.header-mid__top {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
-  flex-direction: row;
-}
-.header-mid__top-text {
+.banner__heading {
   font-size: 5rem;
   font-weight: 700;
   color: #1a2b5f;
+  margin-bottom: 3rem;
 }
-.header-mid__bot {
+.banner__slogan {
   display: inline-block;
-  margin: 3rem 8rem 0 8rem;
-}
-.header-mid__bot-slogan {
-  text-align: center;
+  margin-bottom: 4rem;
   font-size: 1.8rem;
   font-weight: 400;
   color: #6a7597;
 }
-.header-mid__options {
-  margin-top: 3rem;
+.banner__options {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: nowrap;
   flex-direction: row;
 }
-.header-mid__options-link {
+.banner__options-link {
   color: #1a2b5f;
   font-size: 1.4rem;
   font-weight: 600;
   transition: color 0.2s linear;
 }
-.header-mid__options-link:hover {
+.banner__options-link:hover {
   color: #f9bb65;
 }
-.header-mid__options-explore {
+.banner__options-explore {
   background-color: #fff;
   margin-right: 2.4rem;
   transition: color 0.2s linear;
 }
-.header-mid__options-explore:hover {
+.banner__options-explore:hover {
   color: #f9bb65;
 }
-.header-mid__options-buytickets {
+.banner__options-buytickets {
   transition: color 0.2s linear;
 }
-.header-mid__options-buytickets:hover {
+.banner__options-buytickets:hover {
   color: #f9bb65;
+  opacity: 0.7;
 }
 
 .category__list {
@@ -178,14 +189,15 @@ body {
   box-shadow: 0px 50px 70px rgba(255, 200, 122, 0.25);
 }
 .category__img {
-  border-radius: inheritl;
+  border-radius: inherit;
   width: 100%;
   height: 230px;
   transition: 0.3s 0.2s linear;
   margin-bottom: 4rem;
 }
 .category__img:hover {
-  transform: scale(1.1);
+  transform: translateY(-20px);
+  box-shadow: 0px 20px 30px rgba(249, 187, 101, 0.35);
 }
 .category__name {
   margin-bottom: 2.5rem;
@@ -211,24 +223,32 @@ body {
   text-overflow: ellipsis;
 }
 
+.feature {
+  padding-top: 18rem;
+}
 .feature__item {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   flex-wrap: nowrap;
   flex-direction: row;
-  margin-top: 12rem;
+  margin-bottom: 15rem;
+}
+.feature__item:nth-child(odd) .feature__info {
+  padding-left: 10rem;
+}
+.feature__item:nth-child(even) {
+  flex-direction: row-reverse;
+}
+.feature__item:nth-child(even) .feature__info {
+  padding-right: 10rem;
 }
 .feature__img {
-  margin-right: 10rem;
-  width: 100%;
-}
-.feature__img:nth-child(2) {
-  margin-left: 10rem;
-  margin-right: 0;
+  width: 50%;
 }
 .feature__info {
-  margin-top: 10rem;
+  margin-top: 8rem;
+  width: 50%;
 }
 .feature__title {
   font-size: 3.5rem;
@@ -236,7 +256,7 @@ body {
   color: #1a2b5f;
   line-height: 5rem;
 }
-.feature__direction {
+.feature__desc {
   margin: 3rem 0;
   font-size: 1.4rem;
   color: #6a7597;
@@ -308,6 +328,246 @@ body {
 }
 .feature__visit:hover {
   transition: color 0.2s linear;
+  color: #f9bb65;
+}
+.feature-best__list {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.feature-best__item {
+  width: calc(50% - 2.5rem);
+  margin: 1rem 0;
+}
+.feature-best__icon {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 1rem;
+  font-size: 2.5rem;
+  color: #1ec0f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  position: relative;
+}
+.feature-best__icon--primary {
+  color: #f9bb65;
+}
+.feature-best__icon--purple {
+  color: #ff6adf;
+}
+.feature-best__icon--green {
+  color: #92fa3c;
+}
+.feature-best__icon:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background-color: currentColor;
+  opacity: 0.25;
+}
+.feature-best__title {
+  margin: 1rem 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #1a2b5f;
+}
+.feature-best__desc {
+  font-size: 1rem;
+  color: #8d95af;
+}
+
+.partner {
+  margin-bottom: 19rem;
+}
+.partner__container {
+  max-width: 80rem;
+  text-align: center;
+}
+.partner__title {
+  font-size: 2rem;
+  color: #1a2b5f;
+  font-weight: 600;
+  margin-bottom: 7rem;
+  padding-bottom: 7rem;
+  border-bottom: 0.5rem solid currentColor;
+}
+.partner__list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+
+.connect {
+  margin-bottom: 17rem;
+  text-align: center;
+}
+.connect__title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 3.5rem;
+}
+.connect__notice {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #1a2b5f;
+  margin-bottom: 6rem;
+}
+.connect__notice--primary {
+  color: #f9bb65;
+}
+.connect__list {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+.connect__item {
+  max-width: 25%;
+  overflow: hidden;
+  border-radius: 3rem;
+}
+.connect__img {
+  transition: 0.3s 0.2s linear;
+}
+.connect__img:hover {
+  transform: scale(1.1);
+}
+
+.subscribe {
+  margin-bottom: 5rem;
+}
+.subscribe__container {
+  padding-bottom: 8.4rem;
+  border-bottom: 0.5rem solid currentColor;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+.subscribe__title {
+  width: 36%;
+}
+.subscribe__info {
+  width: 55%;
+}
+.subscribe__title {
+  font-size: 2rem;
+  font-weight: 600;
+  max-width: 43rem;
+}
+.subscribe__form {
+  background-color: #f2f1f6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  padding: 2rem;
+  margin-bottom: 4rem;
+}
+.subscribe__button, .subscribe__input {
+  padding: 0;
+}
+.subscribe__input {
+  border: 0;
+  outline: none;
+  background-color: transparent;
+  font-size: 1rem;
+  font-family: "Poppins";
+  color: #8d95af;
+  flex-grow: 1;
+  padding-right: 1.5rem;
+}
+.subscribe__button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  font-size: 1.4rem;
+  color: #1a2b5f;
+  font-weight: bold;
+  transition: color 0.2s linear;
+}
+.subscribe__button:hover {
+  color: #f9bb65;
+}
+.subscribe__social {
+  margin-left: 3.5rem;
+  font-size: 2.2rem;
+  color: #1a2b5f;
+}
+.subscribe__social--link {
+  color: #1a2b5f;
+  transition: color 0.2s linear;
+}
+.subscribe__social--link:hover {
+  color: #f9bb65;
+}
+.subscribe__icon {
+  margin-right: 4rem;
+}
+
+.footer__container {
+  margin-bottom: 3rem;
+  padding-bottom: 19rem;
+  border-bottom: 0.2rem solid currentColor;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+.footer__item {
+  width: 25%;
+}
+.footer__link {
+  font-weight: 600;
+  color: #1a2b5f;
+  font-size: 1.2rem;
+  display: block;
+  margin-bottom: 3rem;
+  width: fit-content;
+  transition: color 0.2s linear;
+}
+.footer__link:hover {
+  color: #f9bb65;
+}
+
+.copyright__container {
+  padding-bottom: 2rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+.copyright__service {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  color: #1a2b5f;
+  font-size: 0.9rem;
+}
+.copyright__by {
+  color: #1a2b5f;
+  font-weight: 600;
+  transition: 0.2s 0.2s linear;
+}
+.copyright__by:hover {
   color: #f9bb65;
 }
 
