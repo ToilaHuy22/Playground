@@ -82,12 +82,13 @@ body {
   flex-direction: row;
 }
 .header__menu-item {
-  margin-left: 5rem;
+  margin-left: 4.5rem;
 }
 .header__menu-item:last-child {
-  margin-left: 7rem;
+  margin-left: 6rem;
 }
 .header__menu-link {
+  display: flex;
   font-size: 1.6rem;
   color: #1a2b5f;
   transition: color 0.2s linear;
@@ -101,7 +102,7 @@ body {
 
 .logo {
   color: #1a2b5f;
-  font-size: 3.5rem;
+  font-size: 2.2rem;
   font-weight: 600;
 }
 .logo__text {

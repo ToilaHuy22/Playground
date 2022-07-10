@@ -104,12 +104,13 @@ body {
             @include flex(center)
         }
         &-item {
-            margin-left: 5rem;
+            margin-left: 4.5rem;
             &:last-child {
-                margin-left: 7rem;
+                margin-left: 6rem;
             }
         }
         &-link {
+            display: flex;
             font-size: 1.6rem;
             color: $text-color;
             @include hover-link-smooth();
@@ -125,7 +126,7 @@ body {
 
 .logo {
     color: $text-color;
-    font-size: 3.5rem;
+    font-size: 2.2rem;
     font-weight: 600;
     &__text {
         color: $primary-color;
@@ -278,7 +279,6 @@ body {
         color: $slogan-color;
     }
     &-intro {
-        &__list {}
         &__item {
             @include flex();
             text-decoration: underline;

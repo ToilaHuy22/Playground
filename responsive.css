@@ -1,0 +1,105 @@
+@media screen and (max-width: 1023px) {
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    flex-direction: row;
+  }
+  .banner {
+    padding-top: 12rem;
+    padding-bottom: 8rem;
+  }
+  .banner__heading {
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+  }
+  .banner__slogan {
+    margin-bottom: 2rem;
+    font-size: 1.6rem;
+    line-height: 2rem;
+  }
+  .category__list {
+    justify-content: space-evenly;
+  }
+  .category__item {
+    width: calc(50% - 7rem);
+    max-height: 35rem;
+    padding: 3rem;
+  }
+  .category__img {
+    margin-bottom: 0;
+  }
+  .category__name {
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+  }
+  .feature {
+    padding-top: 12rem;
+    padding-bottom: 5rem;
+  }
+  .feature__item {
+    margin-bottom: 10rem;
+  }
+  .feature__item:nth-child(odd) .feature__info {
+    padding-left: 5rem;
+  }
+  .feature__item:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+  .feature__item:nth-child(even) .feature__info {
+    padding-right: 5rem;
+  }
+  .feature__info {
+    margin-top: 0;
+  }
+  .feature__title {
+    font-size: 2rem;
+    line-height: 3rem;
+  }
+  .feature__desc {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 20px;
+    -webkit-line-clamp: 3;
+    height: 5rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    margin: 1.5rem 0;
+  }
+  .feature_best__desc {
+    width: 50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 20px;
+    -webkit-line-clamp: 2;
+    height: 1rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+  .partner {
+    margin-bottom: 17rem;
+  }
+  .partner__title {
+    margin-bottom: 5rem;
+    padding-bottom: 5rem;
+  }
+  .connect__title {
+    margin-bottom: 2rem;
+  }
+  .connect__item {
+    max-width: calc(25% - 1.5rem);
+  }
+  .subscribe__social {
+    display: flex;
+  }
+}
+@media screen and (max-width: 767px) {
+  .header__menu {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=responsive.css.map */
