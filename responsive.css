@@ -1,3 +1,35 @@
+@media screen and (max-width: 1365px) {
+  .category__img {
+    height: auto;
+  }
+  .category__item {
+    padding: 1.5rem;
+  }
+  .feature {
+    padding-top: 13rem;
+  }
+  .feature__info {
+    margin-top: 0;
+  }
+  .feature__item {
+    margin-bottom: 15rem;
+  }
+  .feature__item:nth-child(odd) .feature__info {
+    padding-left: 5rem;
+  }
+  .feature__item:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+  .feature__item:nth-child(even) .feature__info {
+    padding-right: 5rem;
+  }
+  .feature__desc {
+    line-height: 1.6rem;
+  }
+  .connect__item {
+    width: calc(25% - 12.5px);
+  }
+}
 @media screen and (max-width: 1023px) {
   .header__inner {
     display: flex;
@@ -24,15 +56,14 @@
   }
   .category__item {
     width: calc(50% - 7rem);
-    max-height: 35rem;
-    padding: 3rem;
+    padding: 2rem;
   }
   .category__img {
     margin-bottom: 0;
   }
   .category__name {
     margin-top: 3rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     font-size: 1.8rem;
   }
   .feature {
@@ -62,20 +93,41 @@
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
-    line-height: 20px;
     -webkit-line-clamp: 3;
     height: 5rem;
+    line-height: 1.8rem;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    margin: 1.5rem 0;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
-  .feature_best__desc {
-    width: 50%;
+  .feature-intro__item {
+    width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
-    line-height: 20px;
     -webkit-line-clamp: 2;
-    height: 1rem;
+    height: 3.5rem;
+    line-height: 1.8rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+  .feature-best__title {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    height: 2.8rem;
+    line-height: 1.4rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+  .feature-best__desc {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    height: 1.2rem;
+    line-height: 1rem;
     display: -webkit-box;
     -webkit-box-orient: vertical;
   }
@@ -90,15 +142,109 @@
     margin-bottom: 2rem;
   }
   .connect__item {
-    max-width: calc(25% - 1.5rem);
+    width: calc(25% - 1.5rem);
   }
   .subscribe__social {
     display: flex;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 735px) {
+  .wrapper {
+    width: 49rem;
+  }
   .header__menu {
     display: none;
+  }
+  .container {
+    width: 49rem;
+  }
+  .banner {
+    width: 49rem;
+    padding: 12rem 2rem;
+  }
+  .banner__heading {
+    font-size: 5rem;
+  }
+  .banner__slogan {
+    font-size: 2rem;
+    line-height: 3rem;
+  }
+  .banner__options-link {
+    font-size: 1.8rem;
+  }
+  .btn {
+    padding: 1.5rem 2.5rem;
+  }
+  .category {
+    width: 49rem;
+  }
+  .category__list {
+    margin: 0 5rem;
+  }
+  .category__item {
+    width: calc(100% - 7rem);
+    padding: 3rem;
+    margin-bottom: 5rem;
+  }
+  .category__img {
+    height: auto;
+  }
+  .category__details {
+    font-size: 1.8rem;
+  }
+  .feature__img {
+    width: 100%;
+  }
+  .feature__item {
+    margin: 0;
+    padding: 0 5rem;
+    padding-bottom: 5rem;
+    display: block;
+  }
+  .feature__item:nth-child(odd) .feature__info {
+    padding: 0 2rem;
+  }
+  .feature__item:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+  .feature__item:nth-child(even) .feature__info {
+    padding: 0 2rem;
+  }
+  .feature__info {
+    width: 100%;
+    margin: 5rem 0;
+  }
+  .feature__visit {
+    display: block;
+    text-align: center;
+  }
+  .connect__list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .connect__item {
+    width: 100%;
+    margin-bottom: 3rem;
+  }
+  .connect__img {
+    margin: 0;
+    text-align: center;
+  }
+  .subscribe__social {
+    display: block;
+    margin: 0;
+  }
+  .subscribe__icon {
+    padding: 0 1rem;
+    font-size: 2rem;
+    margin: 0;
+  }
+  .footer__item {
+    width: auto;
+  }
+  img {
+    display: initial;
   }
 }
 
