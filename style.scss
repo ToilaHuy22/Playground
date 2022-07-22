@@ -39,6 +39,37 @@ html {
     box-shadow: 0px 20px 30px rgba($color, $alpha: 0.35);
 }
 
+@keyframes moveLeft {
+    0% {
+        right: 0px;
+    }
+    100% {
+        right: 100%;
+    }
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes modalFadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(20rem);
+    }
+}
+
 .col-4 {
     max-width: 25%;
 }
@@ -279,15 +310,25 @@ body {
         color: $slogan-color;
     }
     &-intro {
+        position: relative;
+        &__list {
+            @include flex(flex-start, space-between, nowrap)
+        }
         &__item {
-            @include flex();
-            text-decoration: underline;
             font-size: 1.4rem;
             font-weight: 500;
             color: $text-color;
             line-height: 1.8rem;
-            margin-bottom: 2rem;
             cursor: pointer;
+            opacity: 0.6;
+            padding: 0.8rem 0.4rem;
+            border-radius: 0.4rem;
+            background-color: rgba($color: $primary-color, $alpha: 0.1);
+            &.active {
+                opacity: 1;
+                background-color: rgba($color: $primary-color, $alpha: 0.2);
+                color: $primary-color;
+            }
             &--circle {
                 text-decoration: none;
                 position: relative;
@@ -334,6 +375,16 @@ body {
             height: 2rem;
             border-radius: 50%;
             margin-right: 1rem;
+        }
+        &__line {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 0.6rem;
+            border-radius: 14rem;
+            background-color: $primary-color;
+            transition: all 0.3s ease-in;
         }
     }
     &__visit {
@@ -393,6 +444,26 @@ body {
             color: $detail-color;
         }
     }
+    &-content {
+        height: 13rem;
+        padding-bottom: 4rem;
+        &__item {
+            h2 {
+                color: $primary-color;
+                padding-top: 1.4rem;
+                font-size: 1.4rem;
+                padding-bottom: 1rem;
+            }
+            p {
+                font-size: 1.2rem;
+                line-height: 1.4rem;
+            }
+            display: none;
+            &.active {
+                display: block;
+            }
+        }
+    }
 }
 
 .partner {
@@ -435,7 +506,7 @@ body {
         @include flex(stretch, space-between);
     }
     &__item {
-        width: 25%;
+        width: calc(25% - 2rem);
         overflow: hidden;
         border-radius: 3rem;
     }
@@ -556,5 +627,166 @@ body {
         &:hover {
             color: $primary-color;
         }
+    }
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0%;
+    background: rgba($primary-color, $alpha: 0.2);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    animation: modalFadeIn 1s ease;
+    &.open {
+        display: flex;
+    }
+    &-container {
+        border-radius: 3rem;
+        margin: 10rem auto;
+        background: #fff;
+        width: 900px;
+        max-width: calc(100% - 4rem);
+        min-height: 20rem;
+        position: relative;
+        animation: modalFadeIn ease 0.5s;
+    }
+    &-header {
+        border-top-left-radius: 3rem;
+        border-top-right-radius: 3rem;
+        background-color: $primary-color;
+        height: 10rem;
+        @include flex(center, center);
+        font-size: 2.8rem;
+        color: #fff;
+        font-weight: 600;
+    }
+    &-heading {
+        &-icon {
+            margin-right: 1.6rem;
+        }
+    }
+    &-close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        color: #fff;
+        padding: 1.2rem;
+        cursor: pointer;
+        font-size: 2rem;
+        @include hover-link-smooth;
+        &:hover {
+            color: $text-color;
+        }
+    }
+    &-body {
+        padding: 1.6rem;
+    }
+    &-lable {
+        display: block;
+        font-size: 1.4rem;
+        margin-bottom: 1.2rem;
+    }
+    &-input {
+        border-radius: 2rem;
+        border: $primary-color 0.2rem solid;
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.4rem;
+        margin-bottom: 2.2rem;
+    }
+    &-footer {
+        font-size: 1.4rem;
+        padding: 0 2rem 2rem 2rem;
+        text-align: right;
+        a {
+            color: $text-color;
+            @include hover-link-smooth();
+            &:hover {
+                color: $primary-color;
+            }
+        }
+    }
+}
+
+#buy {
+    &-tickets {
+        border-radius: 3rem;
+        margin: 1.6rem 0;
+        padding: 1.6rem;
+        border: none;
+        background-color: $primary-color;
+        width: 100%;
+        height: 5rem;
+        font-size: 1.8rem;
+        color: #fff;
+        cursor: pointer;
+        font-weight: 600;
+        @include hover-link-smooth();
+        &:hover {
+            color: $text-color;
+            background-color: rgba($color: $primary-color, $alpha: 0.8);
+        }
+    }
+    &-icon {
+        margin-left: 0.4rem;
+    }
+}
+
+.reveal {
+    position: relative;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: 1s all ease;
+    &.active {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.reveal-width-right {
+    position: relative;
+    transform: translateX(150px);
+    opacity: 0;
+    transition: 1s all ease;
+    &.active {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.reveal-width-right-2 {
+    position: relative;
+    transform: translateX(150px);
+    opacity: 0;
+    transition: 2s all ease;
+    &.active {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.reveal-width-left {
+    position: relative;
+    transform: translateX(-375px);
+    opacity: 0;
+    transition: 1s all ease;
+    &.active {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.reveal-width-left-2 {
+    position: relative;
+    transform: translateX(-375px);
+    opacity: 0;
+    transition: 2s all ease;
+    &.active {
+        transform: translateX(0);
+        opacity: 1;
     }
 }
